@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Numbers - Kids Flash Cards</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="page-container">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <a href="index.html" class="home-btn" onclick="playClickSound()">
+        <svg viewBox="0 0 24 24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+      </a>
+      <h1 class="page-title">Numbers</h1>
+      <div style="width: 60px;"></div>
+    </nav>
+
+    <!-- Flash Card Area -->
+    <div class="card-area">
+      <button class="nav-btn prev-btn" onclick="prevCard()" disabled>
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+
+      <div class="flash-card number-card" id="flashCard">
+        <!-- Card content will be inserted by JavaScript -->
+      </div>
+
+      <button class="nav-btn next-btn" onclick="nextCard()">
+        <svg viewBox="0 0 24 24">
+          <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+      <div class="progress-dots" id="progressDots"></div>
+      <span class="progress-text" id="progressText">1 of 10</span>
+    </div>
+  </div>
+
+  <!-- Celebration Overlay -->
+  <div class="celebration" id="celebration" style="display: none;">
+    <div class="celebration-content">
+      <h2>Amazing!</h2>
+      <div class="stars">&#127880;&#127881;&#127880;</div>
+      <div class="celebration-buttons">
+        <a href="index.html" class="home-btn-large" onclick="playClickSound()">Home</a>
+        <button class="play-again-btn" onclick="resetCards()">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script>
+    // Number data
+    const numbers = [
+      { number: 1, word: 'One' },
+      { number: 2, word: 'Two' },
+      { number: 3, word: 'Three' },
+      { number: 4, word: 'Four' },
+      { number: 5, word: 'Five' },
+      { number: 6, word: 'Six' },
+      { number: 7, word: 'Seven' },
+      { number: 8, word: 'Eight' },
+      { number: 9, word: 'Nine' },
+      { number: 10, word: 'Ten' }
+    ];
+
+    // Balloon colors
+    const balloonColors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#95E86D', '#FFA06D', '#B06DFF', '#FF6DB6'];
+
+    let currentIndex = 0;
+    const totalCards = numbers.length;
+
+    // Initialize
+    function init() {
+      renderProgressDots();
+      showCard(currentIndex);
+    }
+
+    // Render progress dots
+    function renderProgressDots() {
+      const dotsContainer = document.getElementById('progressDots');
+      dotsContainer.innerHTML = '';
+
+      for (let i = 0; i < totalCards; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot';
+        dotsContainer.appendChild(dot);
+      }
+      updateProgressDots();
+    }
+
+    // Update progress dots
+    function updateProgressDots() {
+      const dots = document.querySelectorAll('.progress-dot');
+
+      dots.forEach((dot, index) => {
+        dot.classList.remove('active', 'completed');
+        if (index < currentIndex) {
+          dot.classList.add('completed');
+        } else if (index === currentIndex) {
+          dot.classList.add('active');
+        }
+      });
+
+      document.getElementById('progressText').textContent = `${currentIndex + 1} of ${totalCards}`;
+    }
+
+    // Generate balloons HTML
+    function generateBalloons(count) {
+      let balloonsHtml = '';
+      for (let i = 0; i < count; i++) {
+        const color = balloonColors[i % balloonColors.length];
+        balloonsHtml += `<span class="balloon" style="color: ${color}">&#127880;</span>`;
+      }
+      return balloonsHtml;
+    }
+
+    // Show card at index
+    function showCard(index) {
+      const card = document.getElementById('flashCard');
+      const data = numbers[index];
+
+      card.innerHTML = `
+        <div class="number-display">${data.number}</div>
+        <div class="word-display">${data.word}</div>
+        <div class="balloons">${generateBalloons(data.number)}</div>
+      `;
+
+      // Update navigation buttons
+      document.querySelector('.prev-btn').disabled = index === 0;
+      document.querySelector('.next-btn').disabled = false;
+
+      updateProgressDots();
+    }
+
+    // Next card
+    function nextCard() {
+      if (currentIndex < totalCards - 1) {
+        currentIndex++;
+        playWhooshSound();
+        showCard(currentIndex);
+      } else {
+        // Show celebration
+        showCelebration();
+      }
+    }
+
+    // Previous card
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        playWhooshSound();
+        showCard(currentIndex);
+      }
+    }
+
+    // Show celebration
+    function showCelebration() {
+      playSuccessSound();
+      document.getElementById('celebration').style.display = 'flex';
+    }
+
+    // Reset cards
+    function resetCards() {
+      currentIndex = 0;
+      document.getElementById('celebration').style.display = 'none';
+      playClickSound();
+      showCard(currentIndex);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextCard();
+      } else if (e.key === 'ArrowLeft') {
+        prevCard();
+      }
+    });
+
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>

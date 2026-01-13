@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids Flash Cards - Learn ABCs, Numbers & Colors!</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="landing-container">
+    <h1 class="landing-title">Let's Learn!</h1>
+
+    <div class="tiles-container">
+      <!-- Alphabets Tile -->
+      <a href="alphabets.html" class="tile tile-alphabets" onclick="playClickSound()">
+        <div class="tile-graphic">
+          <span>A</span>
+          <span>B</span>
+          <span>C</span>
+        </div>
+        <span class="tile-label">Alphabets</span>
+      </a>
+
+      <!-- Numbers Tile -->
+      <a href="numbers.html" class="tile tile-numbers" onclick="playClickSound()">
+        <div class="tile-graphic">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+        </div>
+        <span class="tile-label">Numbers</span>
+      </a>
+
+      <!-- Colors Tile -->
+      <a href="colors.html" class="tile tile-colors" onclick="playClickSound()">
+        <div class="tile-graphic">
+          <div class="color-swatches">
+            <div class="color-swatch"></div>
+            <div class="color-swatch"></div>
+            <div class="color-swatch"></div>
+          </div>
+        </div>
+        <span class="tile-label">Colors</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+</body>
+</html>
