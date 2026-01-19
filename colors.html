@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learn Colors - Kids Flash Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="page-container">
     <!-- Navigation Bar -->
     <nav class="nav-bar">
-      <a href="index.html" class="home-btn" onclick="playClickSound()">
-        <svg viewBox="0 0 24 24">
+      <a href="index.html" class="home-btn" onclick="playClickSound()" aria-label="Return to home page">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
         </svg>
       </a>
@@ -21,8 +23,8 @@
 
     <!-- Flash Card Area -->
     <div class="card-area">
-      <button class="nav-btn prev-btn" onclick="prevCard()" disabled>
-        <svg viewBox="0 0 24 24">
+      <button class="nav-btn prev-btn" onclick="prevCard()" disabled aria-label="Previous card">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
         </svg>
       </button>
@@ -31,8 +33,8 @@
         <!-- Card content will be inserted by JavaScript -->
       </div>
 
-      <button class="nav-btn next-btn" onclick="nextCard()">
-        <svg viewBox="0 0 24 24">
+      <button class="nav-btn next-btn" onclick="nextCard()" aria-label="Next card">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
         </svg>
       </button>

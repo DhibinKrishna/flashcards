@@ -267,6 +267,20 @@ body {
   cursor: not-allowed;
 }
 
+/* Focus indicators for keyboard navigation */
+.tile:focus,
+.nav-btn:focus,
+.home-btn:focus,
+.play-again-btn:focus,
+.home-btn-large:focus {
+  outline: 4px solid var(--color-yellow);
+  outline-offset: 4px;
+}
+
+.tile:focus {
+  outline-offset: 2px;
+}
+
 .nav-btn svg {
   width: 35px;
   height: 35px;
@@ -421,6 +435,7 @@ body {
   font-size: 1.5rem;
   font-weight: 500;
   color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Celebration overlay */
@@ -624,8 +639,41 @@ body {
   }
 
   .nav-btn {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .flash-card {
+    max-width: calc(100vw - 40px);
+    min-height: 280px;
+    aspect-ratio: auto; /* Remove fixed aspect ratio on mobile */
+    padding: 15px;
+  }
+
+  /* Smaller alphabet display on mobile */
+  .alphabet-card .letter-display {
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  .alphabet-card .letter-small {
+    font-size: 2.5rem;
+    margin-top: -5px;
+  }
+
+  .alphabet-card .word-display {
+    font-size: 1.5rem;
+    margin-top: 5px;
+  }
+
+  .alphabet-card .object-image {
+    font-size: 3rem;
+    margin-top: 5px;
+  }
+
+  /* Smaller color name on mobile */
+  .color-card .color-name {
+    font-size: 3rem;
   }
 
   /* Smaller balloons container for mobile - max 4 per row */
