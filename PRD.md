@@ -128,7 +128,7 @@ A web-based flash card application designed for toddlers (ages 2-4) to learn alp
 ## Flash Card Content
 
 ### Alphabets (26 cards)
-A-Apple, B-Ball, C-Cat, D-Dog, E-Elephant, F-Fish, G-Grapes, H-House, I-Ice cream, J-Jelly, K-Kite, L-Lion, M-Moon, N-Nose, O-Orange, P-Penguin, Q-Queen, R-Rainbow, S-Sun, T-Tree, U-Umbrella, V-Violin, W-Whale, X-Xylophone, Y-Yak, Z-Zebra
+A-Apple, B-Ball, C-Cat, D-Dog, E-Elephant, F-Fish, G-Grapes, H-House, I-Ice cream, J-Juice, K-Kite, L-Lion, M-Moon, N-Nose, O-Orange, P-Penguin, Q-Queen, R-Rainbow, S-Sun, T-Turtle, U-Umbrella, V-Violin, W-Whale, X-Xmas Tree, Y-Yo-yo, Z-Zebra
 
 ### Numbers (10 cards)
 1-10, each card showing that number of colorful balloons:
